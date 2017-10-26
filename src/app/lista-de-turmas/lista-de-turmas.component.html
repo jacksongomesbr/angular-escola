@@ -1,0 +1,23 @@
+<h2>Lista de turmas</h2>
+<table class="table table-bordered table-striped">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col" width="80">Código</th>
+      <th scope="col">Disciplina</th>
+      <th scope="col" width="80">Ano</th>
+      <th scope="col" width="50">Ações</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let turma of turmas">
+      <th scope="row">{{turma.codigo}}</th>
+      <td>{{turma.disciplina}}</td>
+      <td>{{turma.ano}}</td>
+      <td>
+        <button class="btn btn-danger btn-sm" (click)="excluir(turma)">
+          <i class="fa fa-trash"></i>
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>
