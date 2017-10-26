@@ -1,0 +1,26 @@
+[
+    {
+        "codigo": "001",
+        "nome": "Português"
+    },
+    {
+        "codigo": "002",
+        "nome": "Matemática"
+    },
+    {
+        "codigo": "003",
+        "nome": "Geografia"
+    },
+    {
+        "codigo": "004",
+        "nome": "História"
+    },
+    {
+        "codigo": "005",
+        "nome": "Química"
+    },
+    {
+        "codigo": "006",
+        "nome": "Física"
+    }
+]

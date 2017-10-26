@@ -21,7 +21,8 @@ export class ListaDeTurmasComponent implements OnInit {
 
   ngOnInit() {
     this.turmas = this.turmasService.getTurmas();
-    this.disciplinas = this.disciplinasService.getDisciplinas();
+    this.disciplinasService.getDisciplinas()
+      .subscribe(disciplinas => this.disciplinas = disciplinas);
     this.anos = [2015, 2016, 2017];
   }
 

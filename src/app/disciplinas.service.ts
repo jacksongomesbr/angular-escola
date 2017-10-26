@@ -1,22 +1,18 @@
 import { Injectable } from '@angular/core';
 import { Disciplina } from './disciplina.model';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/switchMap';
+
 
 @Injectable()
 export class DisciplinasService {
-  disciplinas: Array<Disciplina>;
 
-  constructor() {
-    this.disciplinas = [
-      new Disciplina('001', 'Português'),
-      new Disciplina('002', 'Matemática'),
-      new Disciplina('003', 'Geografia'),
-      new Disciplina('004', 'História'),
-      new Disciplina('005', 'Química'),
-      new Disciplina('006', 'Física')
-    ];
+  constructor(private http: HttpClient) {
   }
 
-  getDisciplinas(): Array<Disciplina> {
-    return this.disciplinas;
+  getDisciplinas(): Observable<Disciplina[]> {
+    return this.http.get<Disciplina[]>('assets/dados/disciplinas.json');
   }
 }
