@@ -49,4 +49,4 @@ export class ListaDeTurmasComponent implements OnInit {
 
 ```
 
-A partir de então o `TurmasService` pode ser utilizado no componente. Veja os arquivos citados no branch [service](/jacksongomesbr/angular-escola/tree/service).
+A partir de então o `TurmasService` pode ser utilizado no componente. Veja os arquivos citados no branch [service](https://github.com/jacksongomesbr/angular-escola/tree/service).
