@@ -12,12 +12,26 @@ export class TurmasService {
       new Turma('003', 'Geografia', 2017),
       new Turma('004', 'História', 2017),
       new Turma('005', 'Química', 2017),
-      new Turma('006', 'Física', 2017)
+      new Turma('006', 'Física', 2017),
+      new Turma('007', 'Português', 2016),
+      new Turma('008', 'Português', 2015)
     ];
   }
 
-  getTurmas(): Array<Turma> {
-    return this.turmas;
+  getTurmas(q?: string, disciplina?: string, ano?: number): Array<Turma> {
+    let lista = this.turmas;
+    if (q) {
+      lista = lista.filter(turma => turma.codigo === q
+        || turma.disciplina.indexOf(q) !== -1
+        || turma.ano.toString() === q);
+    }
+    if (disciplina) {
+      lista = lista.filter(turma => turma.disciplina === disciplina);
+    }
+    if (ano) {
+      lista = lista.filter(turma => turma.ano === ano);
+    }
+    return lista;
   }
 
   getTurmasPorAno(ano: number): Array<Turma> {
