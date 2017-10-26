@@ -1,14 +1,15 @@
-<h2>Lista de turmas</h2>
+<h1>Lista de turmas</h1>
 <div class="row">
   <div class="col-9">
     <div class="mb-2">
       <form class="form-inline" #formPesquisa="ngForm" (submit)="pesquisar()">
         <div class="col-12 p-0">
           <div class="input-group">
-            <input type="text" class="form-control" placeholder="Pesquisar por..." aria-label="Pesquisar por..."
-            name="q" [(ngModel)]="q">
+            <input type="text" class="form-control" placeholder="Pesquisar por..." aria-label="Pesquisar por..." name="q" [(ngModel)]="q">
             <span class="input-group-btn">
-              <button class="btn btn-secondary" type="submit"><i class="fa fa-search"></i></button>
+              <button class="btn btn-secondary" type="submit">
+                <i class="fa fa-search"></i>
+              </button>
             </span>
           </div>
         </div>
