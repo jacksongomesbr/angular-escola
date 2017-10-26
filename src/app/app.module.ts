@@ -10,6 +10,7 @@ import { TurmasService } from './turmas.service';
 import { DisciplinasService } from './disciplinas.service';
 import { PaginaNaoEncontradaComponent } from './pagina-nao-encontrada/pagina-nao-encontrada.component';
 import { HomeComponent } from './home/home.component';
+import { TurmaComponent } from './turma/turma.component';
 
 @NgModule({
     imports: [
@@ -24,6 +25,7 @@ import { HomeComponent } from './home/home.component';
         ListaDeTurmasComponent,
         PaginaNaoEncontradaComponent,
         HomeComponent,
+        TurmaComponent,
     ],
     providers: [
         TurmasService,

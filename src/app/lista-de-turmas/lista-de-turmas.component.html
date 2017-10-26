@@ -21,7 +21,7 @@
           <th scope="col" width="80">Código</th>
           <th scope="col">Disciplina</th>
           <th scope="col" width="80">Ano</th>
-          <th scope="col" width="50">Ações</th>
+          <th scope="col" width="120">Ações</th>
         </tr>
       </thead>
       <tbody>
@@ -32,6 +32,9 @@
           <td>
             <button class="btn btn-danger btn-sm" (click)="excluir(turma)">
               <i class="fa fa-trash"></i>
+            </button>
+            <button class="btn btn-primary btn-sm" (click)="abrir(turma)">
+              <i class="fa fa-eye"></i>
             </button>
           </td>
         </tr>

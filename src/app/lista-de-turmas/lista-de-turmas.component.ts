@@ -3,6 +3,7 @@ import { Turma } from '../turma.model';
 import { Disciplina } from '../disciplina.model';
 import { TurmasService } from '../turmas.service';
 import { DisciplinasService } from '../disciplinas.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-lista-de-turmas',
@@ -17,7 +18,9 @@ export class ListaDeTurmasComponent implements OnInit {
   filtroPorAno = null;
   filtroPorDisciplina = null;
 
-  constructor(private turmasService: TurmasService, private disciplinasService: DisciplinasService) { }
+  constructor(private turmasService: TurmasService,
+    private disciplinasService: DisciplinasService,
+    private router: Router) { }
 
   ngOnInit() {
     this.turmas = this.turmasService.getTurmas();
@@ -57,5 +60,9 @@ export class ListaDeTurmasComponent implements OnInit {
 
   atuarlizarLista() {
     this.turmas = this.turmasService.getTurmas(this.q, this.filtroPorDisciplina, this.filtroPorAno);
+  }
+
+  abrir(turma: Turma) {
+    this.router.navigate(['/turmas', turma.codigo]);
   }
 }

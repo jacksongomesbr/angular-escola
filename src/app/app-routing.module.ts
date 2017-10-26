@@ -4,9 +4,11 @@ import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { ListaDeTurmasComponent } from './lista-de-turmas/lista-de-turmas.component';
 import { PaginaNaoEncontradaComponent } from './pagina-nao-encontrada/pagina-nao-encontrada.component';
+import { TurmaComponent } from './turma/turma.component';
 
 const appRoutes: Routes = [
     { path: 'turmas', component: ListaDeTurmasComponent },
+    { path: 'turmas/:codigo', component: TurmaComponent },
     { path: '', component: HomeComponent },
     { path: '**', component: PaginaNaoEncontradaComponent }
 ];
