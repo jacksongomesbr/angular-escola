@@ -15,5 +15,5 @@
     <label for="nome">Nome</label>
     <input type="text" name="nome" id="nome" class="form-control" [(ngModel)]="nome" required>
   </div>
-  <button type="submit" class="btn btn-primary">Salvar</button>
+  <button type="submit" class="btn btn-primary" [disabled]="!cadastro.valid">Salvar</button>
 </form>

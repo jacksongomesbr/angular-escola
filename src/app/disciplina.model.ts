@@ -1,3 +1,6 @@
 export class Disciplina {
-    constructor(public codigo: string, public nome: string) {}
+  constructor(public id: number,
+              public codigo: string,
+              public nome: string) {
+  }
 }

@@ -17,11 +17,10 @@ export class TurmaComponent implements OnInit {
   }
 
   ngOnInit() {
-    const codigo = this.route.snapshot.paramMap.get('codigo');
-    this.turma = this.turmasService.getTurma(codigo);
-    if (!this.turma) {
-      this.router.navigate(['turma-nao-encontrada']);
-    }
+    const id = parseInt(this.route.snapshot.paramMap.get('id'));
+    this.turmasService.getTurma(id)
+      .subscribe(turma => this.turma = turma,
+        erro => this.router.navigate(['turma-nao-encontrada']));
   }
 
 }

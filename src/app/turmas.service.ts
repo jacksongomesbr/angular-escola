@@ -1,58 +1,54 @@
-import { Injectable } from '@angular/core';
-import { Turma } from './turma.model';
+import {Injectable} from '@angular/core';
+import {Turma} from './turma.model';
+import {HttpClient} from "@angular/common/http";
+import {Observable} from "rxjs/Observable";
 
 @Injectable()
 export class TurmasService {
-  protected turmas: Array<Turma>;
+  API_URL = 'http://localhost:3000';
 
-  constructor() {
-    this.turmas = [
-      new Turma('001', 'Português', 2017),
-      new Turma('002', 'Matemática', 2017),
-      new Turma('003', 'Geografia', 2017),
-      new Turma('004', 'História', 2017),
-      new Turma('005', 'Química', 2017),
-      new Turma('006', 'Física', 2017),
-      new Turma('007', 'Português', 2016),
-      new Turma('008', 'Português', 2015)
-    ];
+  constructor(private http: HttpClient) {
   }
 
-  getTurmas(q?: string, disciplina?: string, ano?: number): Array<Turma> {
-    let lista = this.turmas;
+  getTurmas(q?: string, disciplina?: number, ano?: number): Observable<Turma[]> {
+    let url = this.API_URL + '/turmas';
     if (q) {
-      lista = lista.filter(turma => turma.codigo === q
-        || turma.disciplina.indexOf(q) !== -1
-        || turma.ano.toString() === q);
+      url += '?q=' + q;
     }
     if (disciplina) {
-      lista = lista.filter(turma => turma.disciplina === disciplina);
+      const d = 'disciplinaId=' + disciplina;
+      if (url.indexOf('?') != -1) {
+        url += '&' + d;
+      } else {
+        url += '?' + d;
+      }
     }
     if (ano) {
-      lista = lista.filter(turma => turma.ano === ano);
+      const a = 'ano=' + ano;
+      if (url.indexOf('?') != -1) {
+        url += '&' + a;
+      } else {
+        url += '?' + a;
+      }
     }
-    return lista;
+    if (url.indexOf('?') != -1) {
+      url += '&_expand=disciplina';
+    } else {
+      url += '?_expand=disciplina';
+    }
+    return this.http.get<Turma[]>(url);
   }
 
-  getTurmasPorAno(ano: number): Array<Turma> {
-    return this.turmas.filter(turma => turma.ano === ano);
+  getTurma(id: number): Observable<Turma> {
+    return this.http.get<Turma>(this.API_URL + '/turmas/' + id + '?_expand=disciplina');
   }
 
-  getTurmasPorDisciplina(disciplina: string): Array<Turma> {
-    return this.turmas.filter(turma => turma.disciplina === disciplina);
+  save(codigo: string, disciplinaId: number, ano: number) {
+    const turma = {'codigo': codigo, 'disciplinaId': disciplinaId, ano: ano};
+    return this.http.post(this.API_URL + '/turmas', turma);
   }
 
-  getTurma(codigo: string): Turma {
-    return this.turmas.find(turma => turma.codigo === codigo);
-  }
-
-  save(codigo: string, disciplina: string, ano: number) {
-    this.turmas.push(new Turma(codigo, disciplina, ano));
-  }
-
-  delete(codigo: string) {
-    const turma = this.getTurma(codigo);
-    const i = this.turmas.indexOf(turma);
-    this.turmas.splice(i, 1);
+  delete(id: number) {
+    return this.http.delete(this.API_URL + '/turmas/' + id);
   }
 }

@@ -14,6 +14,7 @@ import { TurmaComponent } from './turma/turma.component';
 import { ListaDeDisciplinasComponent } from './lista-de-disciplinas/lista-de-disciplinas.component';
 import { DisciplinaComponent } from './disciplina/disciplina.component';
 import { CadastroDeDisciplinaComponent } from './cadastro-de-disciplina/cadastro-de-disciplina.component';
+import { CadastroDeTurmaComponent } from './cadastro-de-turma/cadastro-de-turma.component';
 
 @NgModule({
     imports: [
@@ -32,6 +33,7 @@ import { CadastroDeDisciplinaComponent } from './cadastro-de-disciplina/cadastro
         ListaDeDisciplinasComponent,
         DisciplinaComponent,
         CadastroDeDisciplinaComponent,
+        CadastroDeTurmaComponent,
     ],
     providers: [
         TurmasService,

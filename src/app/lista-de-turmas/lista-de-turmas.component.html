@@ -1,3 +1,4 @@
+<a routerLink="/cadastrar-turma" class="btn btn-primary pull-right"><i class="fa fa-plus"></i> Cadastrar</a>
 <h1>Lista de turmas</h1>
 <div class="row">
   <div class="col-9">
@@ -27,7 +28,7 @@
       <tbody>
         <tr *ngFor="let turma of turmas">
           <th scope="row">{{turma.codigo}}</th>
-          <td>{{turma.disciplina}}</td>
+          <td>{{turma.disciplina.nome}}</td>
           <td>{{turma.ano}}</td>
           <td>
             <button class="btn btn-danger btn-sm" (click)="excluir(turma)">
@@ -59,7 +60,7 @@
           <a href="javascript:void(0)" [class.filtro-ativo]="!filtroPorDisciplina" (click)="removerFiltroPorDisciplina()">Todas</a>
         </li>
         <li *ngFor="let disciplina of disciplinas">
-          <a href="javascript:void(0)" [class.filtro-ativo]="filtroPorDisciplina === disciplina.nome" (click)="filtrarPorDisciplina(disciplina.nome)">{{disciplina.nome}}</a>
+          <a href="javascript:void(0)" [class.filtro-ativo]="filtroPorDisciplina === disciplina.id" (click)="filtrarPorDisciplina(disciplina.id)">{{disciplina.nome}}</a>
         </li>
       </ul>
     </div>

@@ -1,9 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-import { Turma } from '../turma.model';
-import { Disciplina } from '../disciplina.model';
-import { TurmasService } from '../turmas.service';
-import { DisciplinasService } from '../disciplinas.service';
-import { Router } from '@angular/router';
+import {Component, OnInit} from '@angular/core';
+import {Turma} from '../turma.model';
+import {Disciplina} from '../disciplina.model';
+import {TurmasService} from '../turmas.service';
+import {DisciplinasService} from '../disciplinas.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-lista-de-turmas',
@@ -17,21 +17,33 @@ export class ListaDeTurmasComponent implements OnInit {
   q = null;
   filtroPorAno = null;
   filtroPorDisciplina = null;
+  excluir_ok = false;
+  excluir_erro = false;
+
 
   constructor(private turmasService: TurmasService,
-    private disciplinasService: DisciplinasService,
-    private router: Router) { }
+              private disciplinasService: DisciplinasService,
+              private router: Router) {
+  }
 
   ngOnInit() {
-    this.turmas = this.turmasService.getTurmas();
     this.disciplinasService.getDisciplinas()
       .subscribe(disciplinas => this.disciplinas = disciplinas);
     this.anos = [2015, 2016, 2017];
+    this.atuarlizarLista();
   }
 
   excluir(turma: Turma) {
-    this.turmasService.delete(turma.codigo);
-    this.atuarlizarLista();
+    this.turmasService.delete(turma.id)
+      .subscribe(ok => {
+          this.excluir_ok = true;
+          this.excluir_erro = false;
+          this.atuarlizarLista();
+        },
+        erro => {
+          this.excluir_ok = false;
+          this.excluir_erro = true;
+        });
   }
 
   removerFiltroPorAno() {
@@ -49,7 +61,7 @@ export class ListaDeTurmasComponent implements OnInit {
     this.atuarlizarLista();
   }
 
-  filtrarPorDisciplina(disciplina: string) {
+  filtrarPorDisciplina(disciplina: number) {
     this.filtroPorDisciplina = disciplina;
     this.atuarlizarLista();
   }
@@ -59,10 +71,11 @@ export class ListaDeTurmasComponent implements OnInit {
   }
 
   atuarlizarLista() {
-    this.turmas = this.turmasService.getTurmas(this.q, this.filtroPorDisciplina, this.filtroPorAno);
+    this.turmasService.getTurmas(this.q, this.filtroPorDisciplina, this.filtroPorAno)
+      .subscribe(turmas => this.turmas = turmas);
   }
 
   abrir(turma: Turma) {
-    this.router.navigate(['/turmas', turma.codigo]);
+    this.router.navigate(['/turmas', turma.id]);
   }
 }

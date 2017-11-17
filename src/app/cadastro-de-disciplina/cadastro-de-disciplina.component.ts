@@ -9,7 +9,7 @@ import {DisciplinasService} from "../disciplinas.service";
 export class CadastroDeDisciplinaComponent implements OnInit {
   codigo = null;
   nome = null;
-  cadastro_ok = null;
+  cadastro_ok = false;
   cadastro_erro = false;
 
   constructor(private disciplinasService: DisciplinasService) {
