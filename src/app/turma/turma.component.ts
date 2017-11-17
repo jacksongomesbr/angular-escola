@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute, ParamMap } from '@angular/router';
-import { TurmasService } from '../turmas.service';
-import { Turma } from '../turma.model';
+import {Component, OnInit} from '@angular/core';
+import {Router, ActivatedRoute, ParamMap} from '@angular/router';
+import {TurmasService} from '../turmas.service';
+import {Turma} from '../turma.model';
 
 @Component({
   selector: 'app-turma',
@@ -12,8 +12,9 @@ export class TurmaComponent implements OnInit {
   turma: Turma;
 
   constructor(private turmasService: TurmasService,
-    private route: ActivatedRoute,
-    private router: Router) { }
+              private route: ActivatedRoute,
+              private router: Router) {
+  }
 
   ngOnInit() {
     const codigo = this.route.snapshot.paramMap.get('codigo');

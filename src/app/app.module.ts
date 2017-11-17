@@ -11,6 +11,9 @@ import { DisciplinasService } from './disciplinas.service';
 import { PaginaNaoEncontradaComponent } from './pagina-nao-encontrada/pagina-nao-encontrada.component';
 import { HomeComponent } from './home/home.component';
 import { TurmaComponent } from './turma/turma.component';
+import { ListaDeDisciplinasComponent } from './lista-de-disciplinas/lista-de-disciplinas.component';
+import { DisciplinaComponent } from './disciplina/disciplina.component';
+import { CadastroDeDisciplinaComponent } from './cadastro-de-disciplina/cadastro-de-disciplina.component';
 
 @NgModule({
     imports: [
@@ -26,6 +29,9 @@ import { TurmaComponent } from './turma/turma.component';
         PaginaNaoEncontradaComponent,
         HomeComponent,
         TurmaComponent,
+        ListaDeDisciplinasComponent,
+        DisciplinaComponent,
+        CadastroDeDisciplinaComponent,
     ],
     providers: [
         TurmasService,
