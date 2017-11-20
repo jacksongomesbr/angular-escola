@@ -2,12 +2,13 @@
     font-weight: bold;
 }
 
-li:hover {
+li p:nth-child(1) {
     cursor: pointer;
+    font-size: 12pt;
 }
 
-li p:nth-child(1) {
-    font-size: 12pt;
+li p:nth-child(1):hover {
+    font-weight: bold;
 }
 
 li p:nth-child(2) {
