@@ -1,9 +1,0 @@
-<a routerLink="/cadastrar-disciplina" class="btn btn-primary pull-right"><i class="fa fa-plus"></i> Cadastrar</a>
-<h1>Lista de disciplinas</h1>
-<ul>
-  <li *ngFor="let disciplina of disciplinas">
-    <a [routerLink]="['/disciplinas', disciplina.id]">
-      {{disciplina.nome}}
-    </a>
-  </li>
-</ul>
