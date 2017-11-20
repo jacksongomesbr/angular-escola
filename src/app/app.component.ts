@@ -6,5 +6,16 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'Angular';
+  disciplinas = [
+    'Língua Portuguesa',
+    'Arte',
+    'Educação Física',
+    'Matemática',
+    'História',
+    'Geografia',
+    'Ciências',
+    'Redação',
+    'Língua Estrangeira Moderna - Inglês',
+    'Ensino Religioso'
+  ];
 }
