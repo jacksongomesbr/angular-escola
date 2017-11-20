@@ -1,0 +1,15 @@
+.selecionado {
+    font-weight: bold;
+}
+
+li:hover {
+    cursor: pointer;
+}
+
+li p:nth-child(1) {
+    font-size: 12pt;
+}
+
+li p:nth-child(2) {
+    font-size: 10pt;
+}

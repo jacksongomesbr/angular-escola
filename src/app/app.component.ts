@@ -7,6 +7,7 @@ import {Disciplina} from './disciplina.model';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+  selecionado = null;
   disciplinas = [
     new Disciplina('Língua Portuguesa', 'O objetivo norteador da BNCC de Língua Portuguesa ' +
       'é garantir a todos os alunos o acesso aos saberes linguísticos necessários para a ' +
@@ -49,4 +50,8 @@ export class AppComponent {
       'Essas aprendizagens, entre outras, possibilitam que os alunos compreendam, ' +
       'expliquem e intervenham no mundo em que vivem.')
   ];
+
+  selecionar(disciplina) {
+    this.selecionado = disciplina;
+  }
 }
