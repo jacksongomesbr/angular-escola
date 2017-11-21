@@ -1,9 +1,11 @@
 <h1>Disciplinas</h1>
 <hr>
 <ul>
-    <li *ngFor="let disciplina of disciplinas"
-        [class.selecionado]="selecionado == disciplina">
+    <li *ngFor="let disciplina of disciplinas">
         {{disciplina.nome}}
+        <button (click)="excluir(disciplina)">
+            Excluir
+        </button>
     </li>
 </ul>
 
@@ -20,7 +22,5 @@
                   cols="70" rows="5">
         </textarea>
     </div>
-    <button type="submit" class="btn btn-primary" [disabled]="!cadastro.valid">
-        Salvar
-    </button>
+    <button type="submit" [disabled]="!cadastro.valid">Salvar</button>
 </form>

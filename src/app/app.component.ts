@@ -69,4 +69,12 @@ export class AppComponent {
     this.nome = null;
     this.descricao = null;
   }
+
+  excluir(disciplina) {
+    if (confirm('Tem certeza que deseja excluir a disciplina "'
+        + disciplina.nome + '"?')) {
+      const i = this.disciplinas.indexOf(disciplina);
+      this.disciplinas.splice(i, 1);
+    }
+  }
 }
