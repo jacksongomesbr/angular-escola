@@ -7,7 +7,7 @@ import {Disciplina} from './disciplina.model';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  selecionado = null;
+  editando = null;
   nome = null;
   descricao = null;
   disciplinas = [
@@ -64,17 +64,39 @@ export class AppComponent {
   ];
 
   salvar() {
-    const d = new Disciplina(this.nome, this.descricao);
-    this.disciplinas.push(d);
+    if (this.editando) {
+      this.editando.nome = this.nome;
+      this.editando.descricao = this.descricao;
+    } else {
+      const d = new Disciplina(this.nome, this.descricao);
+      this.disciplinas.push(d);
+    }
     this.nome = null;
     this.descricao = null;
+    this.editando = null;
   }
 
   excluir(disciplina) {
-    if (confirm('Tem certeza que deseja excluir a disciplina "'
-        + disciplina.nome + '"?')) {
-      const i = this.disciplinas.indexOf(disciplina);
-      this.disciplinas.splice(i, 1);
+    if (this.editando == disciplina) {
+      alert('Você não pode excluir uma disciplina que está editando');
+    } else {
+      if (confirm('Tem certeza que deseja excluir a disciplina "'
+          + disciplina.nome + '"?')) {
+        const i = this.disciplinas.indexOf(disciplina);
+        this.disciplinas.splice(i, 1);
+      }
     }
+  }
+
+  editar(disciplina) {
+    this.nome = disciplina.nome;
+    this.descricao = disciplina.descricao;
+    this.editando = disciplina;
+  }
+
+  cancelar() {
+    this.nome = null;
+    this.descricao = null;
+    this.editando = null;
   }
 }
