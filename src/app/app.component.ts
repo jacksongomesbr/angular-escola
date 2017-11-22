@@ -10,6 +10,9 @@ export class AppComponent {
   editando = null;
   nome = null;
   descricao = null;
+  excluir_ok = false;
+  editar_ok = false;
+  salvar_ok = false;
   disciplinas = [
     new Disciplina('Língua Portuguesa', 'O objetivo norteador da BNCC de ' +
       'Língua Portuguesa é garantir a todos os alunos o acesso aos saberes ' +
@@ -67,9 +70,11 @@ export class AppComponent {
     if (this.editando) {
       this.editando.nome = this.nome;
       this.editando.descricao = this.descricao;
+      this.editar_ok = true;
     } else {
       const d = new Disciplina(this.nome, this.descricao);
       this.disciplinas.push(d);
+      this.salvar_ok = true;
     }
     this.nome = null;
     this.descricao = null;
@@ -77,6 +82,7 @@ export class AppComponent {
   }
 
   excluir(disciplina) {
+    this.redefinir();
     if (this.editando == disciplina) {
       alert('Você não pode excluir uma disciplina que está editando');
     } else {
@@ -84,19 +90,28 @@ export class AppComponent {
           + disciplina.nome + '"?')) {
         const i = this.disciplinas.indexOf(disciplina);
         this.disciplinas.splice(i, 1);
+        this.excluir_ok = true;
       }
     }
   }
 
   editar(disciplina) {
+    this.redefinir();
     this.nome = disciplina.nome;
     this.descricao = disciplina.descricao;
     this.editando = disciplina;
   }
 
   cancelar() {
+    this.redefinir();
+  }
+
+  redefinir() {
     this.nome = null;
     this.descricao = null;
     this.editando = null;
+    this.excluir_ok = false;
+    this.salvar_ok = false;
+    this.editar_ok = false;
   }
 }

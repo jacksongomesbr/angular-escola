@@ -1,24 +1,32 @@
 <div class="container">
     <h1>Disciplinas</h1>
     <hr>
+    <div *ngIf="excluir_ok" class="alert alert-success">
+        <strong>Sucesso!</strong> A disciplina foi excluída com sucesso.
+    </div>
     <table class="table table-hover table-bordered">
-        <thead>
+        <thead class="thead-light">
         <tr>
             <th>Disciplina</th>
-            <th width="160">Ações</th>
+            <th width="200">Ações</th>
         </tr>
         </thead>
         <tbody>
-        <tr *ngFor="let disciplina of disciplinas">
-            <td>{{disciplina.nome}}</td>
+        <tr *ngFor="let disciplina of disciplinas"
+            [class.table-active]="editando == disciplina">
+            <td>
+                <i *ngIf="editando == disciplina"
+                   class="fa fa-pencil-square"></i>
+                {{disciplina.nome}}
+            </td>
             <td>
                 <button class="btn btn-sm btn-danger"
                         (click)="excluir(disciplina)">
-                    Excluir
+                    <i class="fa fa-trash"></i> Excluir
                 </button>
                 <button class="btn btn-sm btn-primary"
                         (click)="editar(disciplina)">
-                    Editar
+                    <i class="fa fa-pencil-square"></i> Editar
                 </button>
             </td>
         </tr>
@@ -27,6 +35,10 @@
 
     <h2>Cadastrar</h2>
     <p>Use este formulário para cadastrar ou editar uma disciplina.</p>
+    <div *ngIf="salvar_ok || editar_ok" class="alert alert-success">
+        <strong>Sucesso!</strong> A disciplina foi cadastrada ou atualizada
+        com sucesso.
+    </div>
     <form #cadastro="ngForm" (submit)="salvar()">
         <div class="form-group">
             <label for="nome">Nome</label><br>
@@ -42,7 +54,8 @@
         </div>
         <div class="text-right">
             <button type="submit" class="btn btn-primary"
-                    [disabled]="!cadastro.valid">Salvar
+                    [disabled]="!cadastro.valid">
+                <i class="fa fa-save"></i> Salvar
             </button>
             <button type="reset" class="btn btn-secondary" (click)="cancelar()">
                 Cancelar
