@@ -1,0 +1,33 @@
+<div class="container">
+    <div class="row" style="height: 600px;">
+        <div class="col"></div>
+        <div class="col-6 align-self-center">
+            <div class="card">
+                <div class="card-body">
+                    <h1 class="card-title">Gerenciador Escolar</h1>
+                    <h6 class="card-subtitle mb-2 text-muted">Entrar no sistema</h6>
+                    <p>Forneça suas credenciais (nome de usuário e senha) para entrar no sistema.</p>
+                    <div *ngIf="erro" class="alert alert-warning">
+                        <strong>Ops!</strong> {{erro}}
+                    </div>
+                    <form #logon="ngForm" (submit)="entrar()">
+                        <div class="form-group">
+                            <label for="login">Nome de usuário</label>
+                            <input type="text" id="login" name="login" class="form-control form-control-lg" required
+                                   [(ngModel)]="usuario">
+                        </div>
+                        <div class="form-group">
+                            <label for="senha">Senha</label>
+                            <input type="password" id="senha" name="senha" class="form-control form-control-lg"
+                                   required [(ngModel)]="senha">
+                        </div>
+                        <div class="text-right">
+                            <button type="submit" class="btn btn-primary" [disabled]="!logon.valid">Entrar</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col"></div>
+    </div>
+</div>

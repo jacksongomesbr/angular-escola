@@ -76,6 +76,6 @@ export class ListaDeTurmasComponent implements OnInit {
   }
 
   abrir(turma: Turma) {
-    this.router.navigate(['/turmas', turma.id]);
+    this.router.navigate(['admin', 'turmas', turma.id]);
   }
 }

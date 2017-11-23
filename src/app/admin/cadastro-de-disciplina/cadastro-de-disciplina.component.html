@@ -1,0 +1,33 @@
+<h1>Disciplinas - Cadastro</h1>
+<hr>
+<div class="alert alert-success" *ngIf="cadastro_ok">
+  <strong>Cadastro realizado com sucesso! </strong>
+  Continue cadastrando outra ou <a routerLink="/admin/disciplinas">volte para a lista das disciplinas</a>
+</div>
+<div class="alert alert-success" *ngIf="atualizar_ok">
+  <strong>Atualização realizada com sucesso! </strong>
+  Continue editando ou <a routerLink="/admin/disciplinas">volte para a lista das disciplinas</a>
+</div>
+<div class="alert alert-danger" *ngIf="cadastro_erro">
+  <strong>Opa!</strong> Aconteceu um erro ao tentar fazer o cadastro. Aguarde alguns instantes e tente novamente.
+</div>
+<div class="alert alert-danger" *ngIf="atualizar_erro">
+  <strong>Opa!</strong> Aconteceu um erro ao tentar atualizar os dados da disciplna.
+  Aguarde alguns instantes e tente novamente.
+</div>
+<form #cadastro="ngForm" (submit)="salvar()">
+  <div class="form-group">
+    <label for="codigo">Código</label>
+    <input type="text" name="codigo" id="codigo" class="form-control" [(ngModel)]="codigo" required>
+  </div>
+  <div class="form-group">
+    <label for="nome">Nome</label>
+    <input type="text" name="nome" id="nome" class="form-control" [(ngModel)]="nome" required>
+  </div>
+  <div class="form-group">
+    <label for="descricao">Descrição</label>
+    <textarea id="descricao" name="descricao" class="form-control"
+              rows="5" cols="80" [(ngModel)]="descricao"></textarea>
+  </div>
+  <button type="submit" class="btn btn-primary" [disabled]="!cadastro.valid">Salvar</button>
+</form>

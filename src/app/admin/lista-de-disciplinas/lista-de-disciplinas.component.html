@@ -1,0 +1,29 @@
+<a routerLink="/admin/disciplinas/0/novo" class="btn btn-primary pull-right"><i class="fa fa-plus"></i> Cadastrar</a>
+<h1>Lista de disciplinas</h1>
+<hr>
+<div class="alert alert-success" *ngIf="excluir_ok">
+    <strong>Sucesso!</strong> A disciplina foi excluída com sucesso.
+</div>
+<div class="alert alert-danger" *ngIf="excluir_erro">
+    <strong>Ops!</strong> Ocorreu um erro ao tentar excluir a disciplina. Aguarde alguns instantes e tente novamente.
+</div>
+<table class="table table-bordered table-striped table-hover">
+    <thead class="thead-dark">
+    <tr>
+        <th width="80">Código</th>
+        <th>Nome</th>
+        <th width="250">Ações</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let disciplina of disciplinas">
+        <td>{{disciplina.codigo}}</td>
+        <td>{{disciplina.nome}}</td>
+        <td>
+            <a [routerLink]="['/admin/disciplinas', disciplina.id]" class="btn btn-primary btn-sm">Abrir</a>
+            <a [routerLink]="['/admin/disciplinas', disciplina.id, 'editar']" class="btn btn-secondary btn-sm">Editar</a>
+            <a href="javascript:void(0)" class="btn btn-danger btn-sm" (click)="excluir(disciplina)">Excluir</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
