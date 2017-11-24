@@ -13,17 +13,16 @@ import {PaginaNaoEncontradaComponent} from './pagina-nao-encontrada/pagina-nao-e
 const routes: Routes = [
   {
     path: 'admin', component: AdminComponent, children: [
-    {path: 'disciplinas', component: ListaDeDisciplinasComponent},
-    {path: 'disciplinas/:id', component: DisciplinaComponent},
-    {path: 'disciplinas/:id/novo', component: CadastroDeDisciplinaComponent},
-    {path: 'disciplinas/:id/editar', component: CadastroDeDisciplinaComponent},
-    {path: 'cadastrar-turma', component: CadastroDeTurmaComponent},
-    {path: 'turmas', component: ListaDeTurmasComponent},
-    {path: 'turmas/:id', component: TurmaComponent},
-    {path: '', component: HomeComponent},
-    {path: '**', component: PaginaNaoEncontradaComponent}
-  ]
-  }
+      {path: 'disciplinas', component: ListaDeDisciplinasComponent},
+      {path: 'disciplinas/:id', component: DisciplinaComponent},
+      {path: 'disciplinas/:id/novo', component: CadastroDeDisciplinaComponent},
+      {path: 'disciplinas/:id/editar', component: CadastroDeDisciplinaComponent},
+      {path: 'cadastrar-turma', component: CadastroDeTurmaComponent},
+      {path: 'turmas', component: ListaDeTurmasComponent},
+      {path: 'turmas/:id', component: TurmaComponent},
+      {path: '', component: HomeComponent},
+      {path: '**', component: PaginaNaoEncontradaComponent}
+  ]}
 ];
 
 @NgModule({
