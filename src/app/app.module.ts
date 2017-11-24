@@ -4,10 +4,12 @@ import {FormsModule} from '@angular/forms';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 import {AppComponent} from './app.component';
+import { ListaDeDisciplinasComponent } from './lista-de-disciplinas/lista-de-disciplinas.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    ListaDeDisciplinasComponent
   ],
   imports: [
     NgbModule.forRoot(),

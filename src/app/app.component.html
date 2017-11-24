@@ -4,34 +4,9 @@
     <div *ngIf="excluir_ok" class="alert alert-success">
         <strong>Sucesso!</strong> A disciplina foi excluída com sucesso.
     </div>
-    <table class="table table-hover table-bordered">
-        <thead class="thead-light">
-        <tr>
-            <th>Disciplina</th>
-            <th width="200">Ações</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr *ngFor="let disciplina of disciplinas"
-            [class.table-active]="editando == disciplina">
-            <td>
-                <i *ngIf="editando == disciplina"
-                   class="fa fa-pencil-square"></i>
-                {{disciplina.nome}}
-            </td>
-            <td>
-                <button class="btn btn-sm btn-danger"
-                        (click)="excluir(disciplina)">
-                    <i class="fa fa-trash"></i> Excluir
-                </button>
-                <button class="btn btn-sm btn-primary"
-                        (click)="editar(disciplina)">
-                    <i class="fa fa-pencil-square"></i> Editar
-                </button>
-            </td>
-        </tr>
-        </tbody>
-    </table>
+    <app-lista-de-disciplinas [disciplinas]="disciplinas" [editando]="editando"
+                              (onEditar)="editar($event)" (onExcluir)="excluir($event)">
+    </app-lista-de-disciplinas>
 
     <h2>Cadastrar</h2>
     <p>Use este formulário para cadastrar ou editar uma disciplina.</p>
