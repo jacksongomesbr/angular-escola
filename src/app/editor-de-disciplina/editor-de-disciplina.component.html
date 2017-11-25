@@ -1,0 +1,19 @@
+<form #cadastro="ngForm" (submit)="salvar()">
+    <div class="form-group">
+        <label for="nome">Nome</label><br>
+        <input type="text" id="nome" name="nome" class="form-control" [(ngModel)]="disciplina.nome" required>
+    </div>
+    <div class="form-group">
+        <label for="descricao">Descrição</label><br>
+        <textarea id="descricao" name="descricao" class="form-control" [(ngModel)]="disciplina.descricao"
+                  cols="70" rows="5"></textarea>
+    </div>
+    <div class="text-right">
+        <button type="submit" class="btn btn-primary" [disabled]="!cadastro.valid">
+            <i class="fa fa-save"></i> Salvar
+        </button>
+        <button type="reset" class="btn btn-secondary" (click)="cancelar()">
+            Cancelar
+        </button>
+    </div>
+</form>

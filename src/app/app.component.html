@@ -8,33 +8,12 @@
                               (onEditar)="editar($event)" (onExcluir)="excluir($event)">
     </app-lista-de-disciplinas>
 
-    <h2>Cadastrar</h2>
+    <h2>Cadastrar ou editar</h2>
     <p>Use este formulário para cadastrar ou editar uma disciplina.</p>
     <div *ngIf="salvar_ok || editar_ok" class="alert alert-success">
         <strong>Sucesso!</strong> A disciplina foi cadastrada ou atualizada
         com sucesso.
     </div>
-    <form #cadastro="ngForm" (submit)="salvar()">
-        <div class="form-group">
-            <label for="nome">Nome</label><br>
-            <input type="text" id="nome" name="nome" class="form-control"
-                   [(ngModel)]="nome"
-                   required>
-        </div>
-        <div class="form-group">
-            <label for="descricao">Descrição</label><br>
-            <textarea id="descricao" name="descricao" class="form-control"
-                      [(ngModel)]="descricao"
-                      cols="70" rows="5"></textarea>
-        </div>
-        <div class="text-right">
-            <button type="submit" class="btn btn-primary"
-                    [disabled]="!cadastro.valid">
-                <i class="fa fa-save"></i> Salvar
-            </button>
-            <button type="reset" class="btn btn-secondary" (click)="cancelar()">
-                Cancelar
-            </button>
-        </div>
-    </form>
+    <app-editor-de-disciplina [disciplina]="editando" (onSalvar)="salvar()" (onCancelar)="cancelar()">
+    </app-editor-de-disciplina>
 </div>

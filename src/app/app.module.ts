@@ -5,11 +5,13 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 import {AppComponent} from './app.component';
 import { ListaDeDisciplinasComponent } from './lista-de-disciplinas/lista-de-disciplinas.component';
+import { EditorDeDisciplinaComponent } from './editor-de-disciplina/editor-de-disciplina.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ListaDeDisciplinasComponent
+    ListaDeDisciplinasComponent,
+    EditorDeDisciplinaComponent
   ],
   imports: [
     NgbModule.forRoot(),
