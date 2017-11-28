@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
 import {Disciplina} from './disciplina.model';
-import {DisciplinasService} from "./disciplinas.service";
+import {DisciplinasService} from './disciplinas.service';
 
 @Component({
   selector: 'app-root',
@@ -16,7 +16,7 @@ export class AppComponent {
   disciplinas = null;
 
   constructor(private disciplinasService: DisciplinasService) {
-    this.disciplinas = this.disciplinasService.todas();
+    this.disciplinasService.carregarDados(() => this.disciplinas = this.disciplinasService.todas());
   }
 
   salvar() {
