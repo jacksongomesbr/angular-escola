@@ -9,8 +9,6 @@ import {DisciplinasService} from "./disciplinas.service";
 })
 export class AppComponent {
   editando = {id: 0, nome: '', descricao: ''};
-  nome = null;
-  descricao = null;
   excluir_ok = false;
   excluir_erro = false;
   salvar_ok = false;

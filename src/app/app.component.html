@@ -10,9 +10,8 @@
 
     <h2>Cadastrar ou editar</h2>
     <p>Use este formulário para cadastrar ou editar uma disciplina.</p>
-    <div *ngIf="salvar_ok || editar_ok" class="alert alert-success">
-        <strong>Sucesso!</strong> A disciplina foi cadastrada ou atualizada
-        com sucesso.
+    <div *ngIf="salvar_ok" class="alert alert-success">
+        <strong>Sucesso!</strong> Os dados da disciplina foram salvos com sucesso.
     </div>
     <app-editor-de-disciplina [disciplina]="editando" (onSalvar)="salvar()" (onCancelar)="cancelar()">
     </app-editor-de-disciplina>
