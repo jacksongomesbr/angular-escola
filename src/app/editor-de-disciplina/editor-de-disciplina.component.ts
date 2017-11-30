@@ -1,4 +1,5 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Disciplina} from '../disciplina.model';
 
 @Component({
   selector: 'app-editor-de-disciplina',
@@ -7,7 +8,7 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 })
 export class EditorDeDisciplinaComponent implements OnInit {
   @Input()
-  disciplina = {nome: '', descricao: ''};
+  disciplina = new Disciplina(null, null, null);
 
   @Output()
   onSalvar = new EventEmitter<any>();

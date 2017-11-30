@@ -6,9 +6,9 @@
     </tr>
     </thead>
     <tbody>
-    <tr *ngFor="let disciplina of disciplinas" [class.table-active]="editando == disciplina">
+    <tr *ngFor="let disciplina of disciplinas" [class.table-active]="editando && (editando.id === disciplina.id)">
         <td>
-            <i *ngIf="editando == disciplina" class="fa fa-pencil-square"></i> {{disciplina.nome}}
+            <i *ngIf="editando && (editando.id === disciplina.id)" class="fa fa-pencil-square"></i> {{disciplina.nome}}
         </td>
         <td>
             <button class="btn btn-sm btn-danger" (click)="excluir(disciplina)">

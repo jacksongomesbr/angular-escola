@@ -5,71 +5,36 @@ import {Observable} from 'rxjs/Observable';
 
 @Injectable()
 export class DisciplinasService {
-  private disciplinas = null;
-  private novo_id = 1;
+  API_URL = 'http://localhost:3000';
 
   constructor(private http: HttpClient) {
   }
 
-  carregarDados(callback) {
-    this.http.get('./assets/dados/disciplinas.json')
-      .subscribe(disciplinas => this.disciplinas = disciplinas)
-      .add(callback);
+  todas() {
+    return this.http.get(this.API_URL + '/disciplinas');
   }
 
-  todas(): Array<Disciplina> {
-    return this.disciplinas;
-  }
-
-  setDisciplinas(disciplinas) {
-    this.disciplinas = disciplinas;
-  }
-
-  salvar(id: number, nome: string, descricao: string): Disciplina {
+  salvar(id: number, nome: string, descricao: string) {
+    const disciplina = {nome: nome, descricao: descricao};
     if (id) {
-      const d = this.encontrar(id);
-      if (d) {
-        d.nome = nome;
-        d.descricao = descricao;
-      } else {
-        throw new Error('Não foi possível encontrar a disciplina');
-      }
-      return d;
+      return this.http.patch(this.API_URL + '/disciplinas/' + id, disciplina);
     } else {
-      const d = new Disciplina(this.novo_id, nome, descricao);
-      this.disciplinas.push(d);
-      this.novo_id++;
-      return d;
+      return this.http.post(this.API_URL + '/disciplinas', disciplina);
     }
   }
 
   excluir(disciplina: number | Disciplina) {
-    let d = null;
+    let id;
     if (typeof(disciplina) === 'number') {
-      d = this.encontrar(disciplina);
+      id = disciplina;
     } else {
-      d = this.encontrar(disciplina.id);
+      id = disciplina.id;
     }
-    if (d) {
-      const i = this.disciplinas.indexOf(d);
-      this.disciplinas.splice(i, 1);
-    } else {
-      throw new Error('Não foi possível encontrar a disciplina');
-    }
+    return this.http.delete(this.API_URL + '/disciplinas/' + id);
   }
 
-  encontrar(arg: number | string) {
-    let d = null;
-    if (typeof(arg) === 'number') {
-      d = this.disciplinas.filter(d => d.id === arg);
-    } else {
-      d = this.disciplinas.filter(d => d.nome === arg);
-    }
-    if (d != null && d.length > 0) {
-      return d[0];
-    } else {
-      return null;
-    }
+  encontrar(arg: number) {
+    return this.http.get(this.API_URL + '/disciplinas/' + arg);
   }
 
 }

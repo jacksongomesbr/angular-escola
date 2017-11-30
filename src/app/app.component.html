@@ -1,18 +1,26 @@
 <div class="container">
     <h1>Disciplinas</h1>
     <hr>
-    <div *ngIf="excluir_ok" class="alert alert-success">
-        <strong>Sucesso!</strong> A disciplina foi excluída com sucesso.
+    <div *ngIf="status_lista === false" class="alert alert-danger">
+        <strong>Ops!</strong> Ocorreu um erro tentar acessar a API para consultar as disciplinas.
+        Parece que o servidor está inacessível ou está recusando conexões. Por isso não será possível
+        utilizar o sistema neste momento. Tente novamente dentro de alguns intantes
     </div>
-    <app-lista-de-disciplinas [disciplinas]="disciplinas" [editando]="editando"
-                              (onEditar)="editar($event)" (onExcluir)="excluir($event)">
-    </app-lista-de-disciplinas>
+    <div *ngIf="status_lista !== false">
+        <div *ngIf="excluir_ok" class="alert alert-success">
+            <strong>Sucesso!</strong> A disciplina foi excluída com sucesso.
+        </div>
 
-    <h2>Cadastrar ou editar</h2>
-    <p>Use este formulário para cadastrar ou editar uma disciplina.</p>
-    <div *ngIf="salvar_ok" class="alert alert-success">
-        <strong>Sucesso!</strong> Os dados da disciplina foram salvos com sucesso.
+        <app-lista-de-disciplinas [disciplinas]="disciplinas" [editando]="editando"
+                                  (onEditar)="editar($event)" (onExcluir)="excluir($event)">
+        </app-lista-de-disciplinas>
+
+        <h2>Cadastrar ou editar</h2>
+        <p>Use este formulário para cadastrar ou editar uma disciplina.</p>
+        <div *ngIf="salvar_ok" class="alert alert-success">
+            <strong>Sucesso!</strong> Os dados da disciplina foram salvos com sucesso.
+        </div>
+        <app-editor-de-disciplina [disciplina]="editando" (onSalvar)="salvar()" (onCancelar)="cancelar()">
+        </app-editor-de-disciplina>
     </div>
-    <app-editor-de-disciplina [disciplina]="editando" (onSalvar)="salvar()" (onCancelar)="cancelar()">
-    </app-editor-de-disciplina>
 </div>
