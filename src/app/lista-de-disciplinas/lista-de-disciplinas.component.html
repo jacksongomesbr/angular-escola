@@ -1,4 +1,24 @@
-<table class="table table-hover table-bordered">
+<a routerLink="/disciplinas/cadastrar" class="btn btn-primary float-right"><i class="fa fa-plus-circle"></i> Cadastrar</a>
+<h2>Disciplinas</h2>
+<hr>
+<div *ngIf="status == 'excluir_ok'" class="alert alert-success">
+    <strong>Sucesso!</strong> A disciplina foi excluída com sucesso.
+</div>
+<div *ngIf="status == 'excluir_erro'" class="alert alert-danger">
+    <strong>Opa!</strong> Aconteceu um erro ao excluir a disciplina. Por favor, aguarde alguns instantes e tente
+    novamente.
+</div>
+<div *ngIf="status == 'erro-conexao'" class="alert alert-danger">
+    <strong>Opa!</strong> Ocorreu um erro de conexão com o servidor. Por favor, aguarde alguns instantes e tente
+    novamente.
+</div>
+<div *ngIf="status == 'carregando'" class="alert alert-info">
+    <strong>Aguarde...</strong> ajeitando as coisas para tudo funcionar direitinho.
+</div>
+<div *ngIf="status == 'excluindo'" class="alert alert-info">
+    <strong>Aguarde...</strong> exclindo a disciplina solicitada.
+</div>
+<table *ngIf="status != 'erro-conexao' && status != 'carregando'" class="table table-hover table-bordered">
     <thead class="thead-light">
     <tr>
         <th>Disciplina</th>
@@ -6,15 +26,15 @@
     </tr>
     </thead>
     <tbody>
-    <tr *ngFor="let disciplina of disciplinas" [class.table-active]="editando && (editando.id === disciplina.id)">
+    <tr *ngFor="let disciplina of disciplinas">
         <td>
-            <i *ngIf="editando && (editando.id === disciplina.id)" class="fa fa-pencil-square"></i> {{disciplina.nome}}
+            {{disciplina.nome}}
         </td>
         <td>
-            <button class="btn btn-sm btn-danger" (click)="excluir(disciplina)">
+            <button class="btn btn-sm btn-danger" (click)="excluir(disciplina)" [disabled]="status == 'excluindo'">
                 <i class="fa fa-trash"></i> Excluir
             </button>
-            <button class="btn btn-sm btn-primary" (click)="editar(disciplina)">
+            <button class="btn btn-sm btn-primary" (click)="editar(disciplina)"  [disabled]="status == 'excluindo'">
                 <i class="fa fa-pencil-square"></i> Editar
             </button>
         </td>
