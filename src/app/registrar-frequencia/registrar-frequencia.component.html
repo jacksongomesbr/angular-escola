@@ -1,0 +1,59 @@
+<h1>Registrar frequência</h1>
+<div *ngIf="status_salvar" class="alert alert-success">
+    <strong>Ótimo!</strong> Os dados foram registrados com sucesso.
+    <a class="alert-link" routerLink="/frequencias/relatorio">Veja a lista das frequências</a> ou continue aqui para continuar registrando.
+</div>
+<div *ngIf="status_salvar === false" class="alert alert-danger">
+    <strong>Ops!</strong> Ocorreu um erro e não foi possível registrar os dados. Tente novamente dentro de alguns instantes.
+</div>
+<form #cadastro="ngForm" (submit)="salvar()">
+    <div class="form-group">
+        <label for="turma">Turma</label>
+        <select id="turma" name="turma" [(ngModel)]="turma" class="form-control" required>
+            <option *ngFor="let t of turmas" [value]="t.id">{{t.codigo}}</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="disciplina">Disciplina</label>
+        <select id="disciplina" name="disciplina" [(ngModel)]="disciplina" class="form-control" required>
+            <option *ngFor="let d of disciplinas" [value]="d.id">{{d.nome}}</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="professor">Professor</label>
+        <select id="professor" name="professor" [(ngModel)]="professor" class="form-control" required>
+            <option *ngFor="let p of professores" [value]="p.id">{{p.nome}}</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="horario">Horário</label>
+        <select id="horario" name="horario" [(ngModel)]="horario" class="form-control" required>
+            <option *ngFor="let h of horarios" [value]="h.id">{{h.nome}}</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="aluno">Aluno</label>
+        <select id="aluno" name="aluno" [(ngModel)]="aluno" class="form-control" required>
+            <option *ngFor="let a of alunos" [value]="a.id">{{a.nome}}</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="data">Data</label>
+        <input type="date" id="data" name="data" [(ngModel)]="data" class="form-control" required>
+    </div>
+    <div class="form-group">
+        <p>Situação</p>
+        <div class="form-check">
+            <label class="form-check-label">
+                <input class="form-check-input" type="radio" name="status" id="statusP" value="P" [(ngModel)]="status" checked>
+                Presente
+            </label>
+            <label class="form-check-label">
+                <input class="form-check-input" type="radio" name="status" id="statusF" [(ngModel)]="status" value="F">
+                Ausente
+            </label>
+        </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary" [disabled]="!cadastro.valid">Salvar</button>
+</form>

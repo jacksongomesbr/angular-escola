@@ -5,27 +5,27 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {RouterModule, Routes} from '@angular/router';
 
 import {AppComponent} from './app.component';
-import {ListaDeDisciplinasComponent} from './lista-de-disciplinas/lista-de-disciplinas.component';
-import {EditorDeDisciplinaComponent} from './editor-de-disciplina/editor-de-disciplina.component';
-import {DisciplinasService} from './disciplinas.service';
 import {HttpClientModule} from '@angular/common/http';
 import {HomeComponent} from './home/home.component';
 import {PaginaNaoEncontradaComponent} from './pagina-nao-encontrada/pagina-nao-encontrada.component';
+import {RegistrarFrequenciaComponent} from './registrar-frequencia/registrar-frequencia.component';
+import {ApiService} from './api.service';
+import {RelatorioDeFrequenciasComponent} from './relatorio-de-frequencias/relatorio-de-frequencias.component';
 
 const appRoutes: Routes = [
-  {path: 'disciplinas', component: ListaDeDisciplinasComponent},
-  {path: 'disciplinas/:id', component: EditorDeDisciplinaComponent},
-  {path: '', component: HomeComponent,},
+  {path: 'frequencias/cadastrar', component: RegistrarFrequenciaComponent},
+  {path: 'frequencias/relatorio', component: RelatorioDeFrequenciasComponent},
+  {path: '', component: HomeComponent},
   {path: '**', component: PaginaNaoEncontradaComponent}
 ];
 
 @NgModule({
   declarations: [
     AppComponent,
-    ListaDeDisciplinasComponent,
-    EditorDeDisciplinaComponent,
     HomeComponent,
-    PaginaNaoEncontradaComponent
+    PaginaNaoEncontradaComponent,
+    RegistrarFrequenciaComponent,
+    RelatorioDeFrequenciasComponent
   ],
   imports: [
     RouterModule.forRoot(
@@ -37,7 +37,7 @@ const appRoutes: Routes = [
     HttpClientModule,
     FormsModule
   ],
-  providers: [DisciplinasService],
+  providers: [ApiService],
   bootstrap: [AppComponent]
 })
 export class AppModule {
