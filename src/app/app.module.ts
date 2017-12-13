@@ -11,10 +11,12 @@ import {PaginaNaoEncontradaComponent} from './pagina-nao-encontrada/pagina-nao-e
 import {RegistrarFrequenciaComponent} from './registrar-frequencia/registrar-frequencia.component';
 import {ApiService} from './api.service';
 import {RelatorioDeFrequenciasComponent} from './relatorio-de-frequencias/relatorio-de-frequencias.component';
+import {ListaDeTurmasComponent} from './lista-de-turmas/lista-de-turmas.component';
 
 const appRoutes: Routes = [
   {path: 'frequencias/cadastrar', component: RegistrarFrequenciaComponent},
   {path: 'frequencias/relatorio', component: RelatorioDeFrequenciasComponent},
+  {path: 'turmas', component: ListaDeTurmasComponent},
   {path: '', component: HomeComponent},
   {path: '**', component: PaginaNaoEncontradaComponent}
 ];
@@ -25,7 +27,8 @@ const appRoutes: Routes = [
     HomeComponent,
     PaginaNaoEncontradaComponent,
     RegistrarFrequenciaComponent,
-    RelatorioDeFrequenciasComponent
+    RelatorioDeFrequenciasComponent,
+    ListaDeTurmasComponent
   ],
   imports: [
     RouterModule.forRoot(

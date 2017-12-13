@@ -1,0 +1,17 @@
+<h1>Turmas</h1>
+<table class="table table-striped table-hover table-bordered">
+    <thead class="thead-light">
+    <tr>
+        <td scope="col">Código</td>
+        <td scope="col">Professores</td>
+        <td scope="col">Quant. alunos</td>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let turma of turmas">
+        <td>{{turma.codigo}}</td>
+        <td>{{turma.professores}}</td>
+        <td>{{turma.quantidade_de_alunos}}</td>
+    </tr>
+    </tbody>
+</table>

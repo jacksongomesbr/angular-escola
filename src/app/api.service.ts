@@ -29,6 +29,18 @@ export class ApiService {
     return this.http.get(this.API_URL + '/alunos');
   }
 
+  matriculas(): Observable<any> {
+    return this.http.get(this.API_URL + '/matriculas');
+  }
+
+  matriculasNaTurma(turmaId: number): Observable<any> {
+    return this.http.get(this.API_URL + '/matriculas?turmaId=' + turmaId);
+  }
+
+  professoresNaTurma(turmaId: number): Observable<any> {
+    return this.http.get(this.API_URL + '/professoresNasTurmas?turmaId=' + turmaId + '&_expand=professor');
+  }
+
   frequencias(): Observable<any> {
     return this.http.get(this.API_URL + '/frequencias?_expand='
       + 'aluno&_expand=professor&_expand=turma&_expand=disciplina&_expand=horario&_sort=turmaId,alunoId');

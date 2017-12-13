@@ -1,5 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ApiService} from '../api.service';
+import {Observable} from 'rxjs/Observable';
+import {zip} from 'rxjs/observable/zip';
 
 @Component({
   selector: 'app-registrar-frequencia',
