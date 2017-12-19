@@ -1,0 +1,32 @@
+<div *ngIf="disciplina">
+    <h1>{{disciplina.disciplina.nome}}</h1>
+    <hr>
+    <p>Turma ({{disciplina.turma.id}}) - Código: {{disciplina.turma.codigo}}</p>
+    <p>Professor(a): {{disciplina.professor.nome}}</p>
+    <p>Porcentagem de aprovados: {{porcentagem_aprovados}}% -
+    Porcentagem de reprovados: {{porcentagem_reprovados}}%</p>
+    <table class="table table-hover table-striped table-bordered">
+        <thead class="thead-light">
+        <tr>
+            <th scope="col">Aluno</th>
+            <th scope="col">Nota 1</th>
+            <th scope="col">Nota 2</th>
+            <th scope="col">Nota 3</th>
+            <th scope="col">Nota 4</th>
+            <th scope="col">Nota final</th>
+            <th scope="col">Situação final</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let n of notas">
+            <td>{{n.aluno.nome}}</td>
+            <td>{{n.nota1}}</td>
+            <td>{{n.nota2}}</td>
+            <td>{{n.nota3}}</td>
+            <td>{{n.nota4}}</td>
+            <td>{{n.media}}</td>
+            <td>{{n.situacao_final}}</td>
+        </tr>
+        </tbody>
+    </table>
+</div>

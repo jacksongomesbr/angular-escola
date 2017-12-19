@@ -1,0 +1,27 @@
+<div *ngIf="turma">
+    <h1>Turma ({{turma.id}})</h1>
+    <hr>
+    <p>
+        <strong>Código: {{turma.codigo}}</strong> -
+        <strong>Ano: {{turma.ano}}</strong>
+    </p>
+    <table class="table table-bordered table-striped table-hover">
+        <thead class="thead-light">
+        <tr>
+            <th scope="col">Disciplina</th>
+            <th scope="col">Professor</th>
+            <th scope="col" >Ação</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let d of disciplinas">
+            <td>{{d.disciplina.nome}}</td>
+            <td>{{d.professor.nome}}</td>
+            <td>
+                <a class="btn btn-primary"
+                   [routerLink]="['/turmas', turma.id, 'disciplinas', d.disciplinaId, 'registrar-notas']">Registrar notas</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>

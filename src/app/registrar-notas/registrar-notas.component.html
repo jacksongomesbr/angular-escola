@@ -1,0 +1,34 @@
+<h1>Registrar notas</h1>
+<div *ngIf="status" class="alert alert-success">
+    <strong>Ótimo!</strong> Os dados foram registrados com sucesso.
+    <a class="alert-link" [routerLink]="['/turmas', turmaId]">Volta para o gerenciador da turma</a> ou continue aqui para continuar registrando.
+</div>
+<div *ngIf="status === false" class="alert alert-danger">
+    <strong>Ops!</strong> Ocorreu um erro e não foi possível registrar os dados. Tente novamente dentro de alguns instantes.
+</div>
+<form #cadastro="ngForm" (submit)="salvar()">
+    <div class="form-group">
+        <label for="aluno">Aluno</label>
+        <select id="aluno" name="aluno" [(ngModel)]="aluno" class="form-control" required>
+            <option *ngFor="let a of alunos" [value]="a.alunoId">{{a.aluno.nome}}</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="nota1">Nota 1</label>
+        <input type="number" id="nota1" name="nota1" [(ngModel)]="nota1" class="form-control" required>
+    </div>
+    <div class="form-group">
+        <label for="nota2">Nota 2</label>
+        <input type="number" id="nota2" name="nota2" [(ngModel)]="nota2" class="form-control" required>
+    </div>
+    <div class="form-group">
+        <label for="nota3">Nota 3</label>
+        <input type="number" id="nota3" name="nota3" [(ngModel)]="nota3" class="form-control" required>
+    </div>
+    <div class="form-group">
+        <label for="nota4">Nota 4</label>
+        <input type="number" id="nota4" name="nota4" [(ngModel)]="nota4" class="form-control" required>
+    </div>
+
+    <button type="submit" class="btn btn-primary" [disabled]="!cadastro.valid">Salvar</button>
+</form>
