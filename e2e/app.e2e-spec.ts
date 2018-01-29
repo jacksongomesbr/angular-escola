@@ -1,6 +1,6 @@
 import { AppPage } from './app.po';
 
-describe('angular-escola-novo App', () => {
+describe('angular-escola App', () => {
   let page: AppPage;
 
   beforeEach(() => {
@@ -9,6 +9,6 @@ describe('angular-escola-novo App', () => {
 
   it('should display welcome message', () => {
     page.navigateTo();
-    expect(page.getParagraphText()).toEqual('Welcome to app!');
+    expect(page.getParagraphText()).toEqual('Welcome to Angular!');
   });
 });
