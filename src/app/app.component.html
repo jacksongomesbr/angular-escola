@@ -1,6 +1,30 @@
-<div class="container">
-    <h1>{{title}}</h1>
-    <p>Este software web é desenvolvido utilizando Angular.</p>
-    <br>
-    <img src="assets/images/angular.svg" width="200">
-</div>
+<h1>Disciplinas</h1>
+<hr>
+
+<table style="width:100%">
+    <tr>
+        <th>ID</th>
+        <th>Nome</th> 
+        <th>Detalhes</th>
+    </tr>
+    <tr *ngFor="let disciplina of disciplinas">
+        <td>{{disciplina.id}}</td>
+        <td>{{disciplina.nome}}</td> 
+        <td><button (click)="selecionar(disciplina)">Detalhes</button></td>
+    </tr>
+</table>
+
+<table>
+    <tr>
+        <th>Disciplina</th>
+        <th>Nome</th>
+        <th>Professor</th>
+        <th>Descrição</th>
+    </tr>
+    <tr *ngFor="let disciplina of disciplinas">
+        <td *ngIf="selecionado == disciplina">{{disciplina.id}}</td>
+        <td *ngIf="selecionado == disciplina">{{disciplina.nome}}</td>
+        <td *ngIf="selecionado == disciplina">{{disciplina.professor.nome}}</td>
+        <td *ngIf="selecionado == disciplina">{{disciplina.descricao}}</td>
+    </tr>
+</table>
