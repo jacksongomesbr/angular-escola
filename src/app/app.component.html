@@ -1,16 +1,25 @@
 <h1>Disciplinas</h1>
 <hr>
-<ul>
-    <li *ngFor="let disciplina of disciplinas">
-        {{disciplina.nome}}
-        <button (click)="excluir(disciplina)">
-            Excluir
-        </button>
-        <button (click)="editar(disciplina)">
-            Editar
-        </button>
-    </li>
-</ul>
+
+<table style="width:100%">
+    <tr>
+        <th>ID</th>
+        <th>Nome</th> 
+        <th>Ações</th>
+    </tr>
+    <tr *ngFor="let disciplina of disciplinas">
+        <td>{{disciplina.id}}</td>
+        <td>{{disciplina.nome}}</td> 
+        <td> 
+            <button (click)="excluir(disciplina)">
+                Excluir
+            </button>
+            <button (click)="editar(disciplina)">
+                Editar
+            </button>
+        </td>
+    </tr>
+</table>
 
 <h2>Cadastrar</h2>
 <p>Use este formulário para cadastrar ou editar uma disciplina.</p>
