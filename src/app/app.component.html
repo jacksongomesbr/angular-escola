@@ -1,15 +1,21 @@
-<h1>Disciplinas</h1>
+<h1>Disciplinas
+    <button (click)="novo()">
+        Novo
+    </button>
+</h1>
 <hr>
 
 <table style="width:100%">
     <tr>
         <th>ID</th>
-        <th>Nome</th> 
+        <th>Nome</th>
+        <th>Carga Horária</th> 
         <th>Ações</th>
     </tr>
     <tr *ngFor="let disciplina of disciplinas">
         <td>{{disciplina.id}}</td>
         <td>{{disciplina.nome}}</td> 
+        <td>{{disciplina.cargaHoraria}}</td>
         <td> 
             <button (click)="excluir(disciplina)">
                 Excluir
@@ -20,9 +26,10 @@
         </td>
     </tr>
 </table>
-<button (click)="novo()">
-    Novo
-</button>
+<br/>
+    <h3>Total de Carga Horária</h3>
+    {{total()}}
+<br/>
 <div *ngIf="apresentar">
     <h2>Cadastrar</h2>
     <form #cadastro="ngForm" (submit)="salvar()">
@@ -33,6 +40,10 @@
         <div>
             <label for="nome">Nome</label><br>
             <input type="text" id="nome" name="nome" [(ngModel)]="nome" required>
+        </div>
+        <div>
+            <label for="cargaHoraria">Carga Horária</label><br>
+            <input type="number" id="cargaHoraria" name="cargaHoraria" [(ngModel)]="cargaHoraria" required>
         </div>
         <div>
             <label for="descricao">Descrição</label><br>
