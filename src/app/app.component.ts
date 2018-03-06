@@ -9,6 +9,7 @@ import {Disciplina} from './disciplina.model';
 export class AppComponent {
   editando = null;
   nome = null;
+  id = null;
   descricao = null;
   apresentar = false;
   disciplinas = [
@@ -70,12 +71,14 @@ export class AppComponent {
 
   salvar() {
     if (this.editando) {
+      this.editando.id = this.id;
       this.editando.nome = this.nome;
       this.editando.descricao = this.descricao;
     } else {
-      const d = new Disciplina(this.nome, this.descricao);
+      const d = new Disciplina(this.id,this.nome,this.descricao);
       this.disciplinas.push(d);
     }
+    this.id = null;
     this.nome = null;
     this.descricao = null;
     this.editando = null;
@@ -97,12 +100,14 @@ export class AppComponent {
 
   editar(disciplina) {
     this.apresentar= true;
+    this.id = disciplina.id;
     this.nome = disciplina.nome;
     this.descricao = disciplina.descricao;
     this.editando = disciplina;
   }
 
   cancelar() {
+    this.id = null;
     this.nome = null;
     this.descricao = null;
     this.editando = null;
