@@ -20,19 +20,26 @@
         </td>
     </tr>
 </table>
-
-<h2>Cadastrar</h2>
-<p>Use este formulário para cadastrar ou editar uma disciplina.</p>
-<form #cadastro="ngForm" (submit)="salvar()">
-    <div>
-        <label for="nome">Nome</label><br>
-        <input type="text" id="nome" name="nome" [(ngModel)]="nome" required>
-    </div>
-    <div>
-        <label for="descricao">Descrição</label><br>
-        <textarea id="descricao" name="descricao" [(ngModel)]="descricao"
-                  cols="70" rows="5"></textarea>
-    </div>
-    <button type="submit" [disabled]="!cadastro.valid">Salvar</button>
-    <button type="reset" (click)="cancelar()">Cancelar</button>
-</form>
+<button (click)="novo()">
+    Novo
+</button>
+<div *ngIf="apresentar">
+    <h2>Cadastrar</h2>
+    <form #cadastro="ngForm" (submit)="salvar()">
+        <div>
+            <label for="id">Id</label><br>
+            <input type="number" id="id" name="id" [(ngModel)]="id" required>
+        </div>
+        <div>
+            <label for="nome">Nome</label><br>
+            <input type="text" id="nome" name="nome" [(ngModel)]="nome" required>
+        </div>
+        <div>
+            <label for="descricao">Descrição</label><br>
+            <textarea id="descricao" name="descricao" [(ngModel)]="descricao"
+                    cols="70" rows="5"></textarea>
+        </div>
+        <button type="submit" [disabled]="!cadastro.valid">Salvar</button>
+        <button type="reset" (click)="cancelar()">Cancelar</button>
+    </form>
+</div>
