@@ -1,6 +1,6 @@
 import { AppPage } from './app.po';
 
-describe('angular-escola-novo App', () => {
+describe('angular-updated-seed App', () => {
   let page: AppPage;
 
   beforeEach(() => {
