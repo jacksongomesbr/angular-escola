@@ -1,54 +1,62 @@
-<h1>Disciplinas
+<h1>Eventos
     <button (click)="novo()">
-        Novo
+        Cadastrar
     </button>
 </h1>
 <hr>
 
 <table style="width:100%">
     <tr>
-        <th>ID</th>
+        <th>Sigla</th>
         <th>Nome</th>
-        <th>Carga Horária</th> 
-        <th>Ações</th>
+        <th>Data Inicio</th> 
+        <th>Data Fim</th>
+        <th>Prazo Submissao</th>
+        <th>Opcoes</th>
     </tr>
-    <tr *ngFor="let disciplina of disciplinas">
-        <td>{{disciplina.id}}</td>
-        <td>{{disciplina.nome}}</td> 
-        <td>{{disciplina.cargaHoraria}}</td>
+    <tr *ngFor="let evento of eventos">
+        <td>{{evento.sigla}}</td>
+        <td>{{evento.nome}}</td> 
+        <td>{{evento.dataInicio}}</td>
+        <td>{{evento.dataFim}}</td>
+        <td>{{evento.submissao}}</td>
         <td> 
-            <button (click)="excluir(disciplina)">
+            <button (click)="excluir(evento)">
                 Excluir
             </button>
-            <button (click)="editar(disciplina)">
+            <button (click)="editar(evento)">
                 Editar
             </button>
         </td>
     </tr>
 </table>
-<br/>
-    <h3>Total de Carga Horária</h3>
-    {{total()}}
-<br/>
+
 <div *ngIf="apresentar">
     <h2>Cadastrar</h2>
     <form #cadastro="ngForm" (submit)="salvar()">
         <div>
-            <label for="id">Id</label><br>
-            <input type="number" id="id" name="id" [(ngModel)]="id" required>
+            <label for="sigla">Sigla</label><br>
+            <input type="text" id="sigla" name="sigla" [(ngModel)]="sigla" required>
         </div>
         <div>
             <label for="nome">Nome</label><br>
             <input type="text" id="nome" name="nome" [(ngModel)]="nome" required>
         </div>
         <div>
-            <label for="cargaHoraria">Carga Horária</label><br>
-            <input type="number" id="cargaHoraria" name="cargaHoraria" [(ngModel)]="cargaHoraria" required>
+            <label for="dataInicio">Data Inicio</label><br>
+            <input type="text" id="dataInicio" name="dataInicio" [(ngModel)]="dataInicio" required>
         </div>
         <div>
-            <label for="descricao">Descrição</label><br>
-            <textarea id="descricao" name="descricao" [(ngModel)]="descricao"
-                    cols="70" rows="5"></textarea>
+            <label for="dataFim">Data Fim</label><br>
+            <input type="text" id="dataFim" name="dataFim" [(ngModel)]="dataFim" required>
+        </div>
+        <div>
+            <label for="submissao">Prazo Submissao</label><br>
+            <input type="text" id="submissao" name="submissao" [(ngModel)]="submissao" required/>
+        </div>
+        <div>
+            <label for="url">URL</label><br>
+            <input type="text" id="url" name="url" [(ngModel)]="url">
         </div>
         <button type="submit" [disabled]="!cadastro.valid">Salvar</button>
         <button type="reset" (click)="cancelar()">Cancelar</button>
