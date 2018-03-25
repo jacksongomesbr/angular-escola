@@ -1,6 +1,90 @@
-<div class="container">
-    <h1>{{title}}</h1>
-    <p>Este software web é desenvolvido utilizando Angular.</p>
-    <br>
-    <img src="assets/images/angular.svg" width="200">
+<script>
+    if (typeof(Storage) !== "undefined") {
+        localStorage.setItem("disciplinas");
+        // Retrieve
+        document.getElementById("result").innerHTML = localStorage.getItem("tr");
+    } else {
+        document.getElementById("result").innerHTML = "Sorry, your browser does not support Web Storage...";
+    }
+</script>
+<h1>Disciplinas
+    <button (click)="novo()">
+        Novo
+    </button>
+</h1>
+<hr>
+
+<table style="width:100%">
+    <tr>
+        <th>ID</th>
+        <th>Nome</th>
+        <th>Carga Horária</th> 
+        <th>data</th>
+        <th>Ativo</th>
+        <th>Tipo</th>
+        <th>Periodo</th>
+        <th>Ações</th>
+    </tr>
+    <tr *ngFor="let disciplina of disciplinas">
+        <td>{{disciplina.id}}</td>
+        <td>{{disciplina.nome}}</td> 
+        <td>{{disciplina.cargaHoraria}}</td>
+        <td>{{disciplina.data}}</td>
+        <td>{{disciplina.isAtivo}}</td>
+        <td>{{disciplina.tipo}}</td>
+        <td>{{disciplina.periodo}}</td>
+        <td> 
+            <button (click)="excluir(disciplina)">
+                Excluir
+            </button>
+            <button (click)="editar(disciplina)">
+                Editar
+            </button>
+        </td>
+    </tr>
+</table>
+<br/>
+    <h3>Total de Carga Horária</h3>
+    {{total()}}
+<br/>
+<div *ngIf="apresentar">
+    <h2>Cadastrar</h2>
+    <form #cadastro="ngForm" (submit)="salvar()">
+        <div>
+            <label for="id">Id</label><br>
+            <input type="number" id="id" name="id" [(ngModel)]="id" required>
+        </div>
+        <div>
+            <label for="nome">Nome</label><br>
+            <input type="text" id="nome" name="nome" [(ngModel)]="nome" required>
+        </div>
+        <div>
+            <label for="cargaHoraria">Carga Horária</label><br>
+            <input type="number" id="cargaHoraria" name="cargaHoraria" [(ngModel)]="cargaHoraria" required>
+        </div>
+        <div>
+            <label for="data">Data</label><br>
+            <input type="text" id="data" name="data" [(ngModel)]="data" required>
+        </div>
+        <div>
+            <label for="isAtivo">Ativo</label><br>
+            <input type="checkbox" id="isAtivo" name="isAtivo" [(ngModel)]="isAtivo">
+        </div>
+        <div>
+            <label for="tipo">Tipo</label><br>
+            <input type="radio" name="tipo" value="principal" [(ngModel)]="tipo" checked>Principal<br>
+            <input type="radio" name="tipo" value="secundaria" [(ngModel)]="tipo">Secundária<br>
+        </div>
+        <div>
+            <label for="periodo">Periodo</label><br>
+            <select name="periodo" [(ngModel)]="periodo">
+                <option value= 1>1</option>
+                <option value= 2>2</option>
+                <option value= 3>3</option>
+                <option value= 4>4</option>
+            </select>
+        </div>
+        <button type="submit" [disabled]="!cadastro.valid">Salvar</button>
+        <button type="reset" (click)="cancelar()">Cancelar</button>
+    </form>
 </div>
