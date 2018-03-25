@@ -61,8 +61,9 @@ export class AppComponent {
   }
 
   editar(evento) {
-    this.editando.sigla = this.sigla;
-    this.editando.nome = this.nome;
+    this.apresentar=true;
+    this.editando.sigla = evento.sigla;
+    this.editando.nome = evento.nome;
     this.editando.dataInicio = this.dataInicio;
     this.editando.dataFim = this.dataFim ;
     this.editando.cargaHoraria = this.cargaHoraria;
