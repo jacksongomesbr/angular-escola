@@ -1,6 +1,56 @@
-<div class="container">
-    <h1>{{title}}</h1>
-    <p>Este software web é desenvolvido utilizando Angular.</p>
-    <br>
-    <img src="assets/images/angular.svg" width="200">
+<h1>Disciplinas
+    <button (click)="novo()">
+        Novo
+    </button>
+</h1>
+<hr>
+
+<table style="width:100%">
+    <tr>
+        <th>ID</th>
+        <th>Nome</th>
+        <th>Carga Horária</th> 
+        <th>Ações</th>
+    </tr>
+    <tr *ngFor="let disciplina of disciplinas">
+        <td>{{disciplina.id}}</td>
+        <td>{{disciplina.nome}}</td> 
+        <td>{{disciplina.cargaHoraria}}</td>
+        <td> 
+            <button (click)="excluir(disciplina)">
+                Excluir
+            </button>
+            <button (click)="editar(disciplina)">
+                Editar
+            </button>
+        </td>
+    </tr>
+</table>
+<br/>
+    <h3>Total de Carga Horária</h3>
+    {{total()}}
+<br/>
+<div *ngIf="apresentar">
+    <h2>Cadastrar</h2>
+    <form #cadastro="ngForm" (submit)="salvar()">
+        <div>
+            <label for="id">Id</label><br>
+            <input type="number" id="id" name="id" [(ngModel)]="id" required>
+        </div>
+        <div>
+            <label for="nome">Nome</label><br>
+            <input type="text" id="nome" name="nome" [(ngModel)]="nome" required>
+        </div>
+        <div>
+            <label for="cargaHoraria">Carga Horária</label><br>
+            <input type="number" id="cargaHoraria" name="cargaHoraria" [(ngModel)]="cargaHoraria" required>
+        </div>
+        <div>
+            <label for="descricao">Descrição</label><br>
+            <textarea id="descricao" name="descricao" [(ngModel)]="descricao"
+                    cols="70" rows="5"></textarea>
+        </div>
+        <button type="submit" [disabled]="!cadastro.valid">Salvar</button>
+        <button type="reset" (click)="cancelar()">Cancelar</button>
+    </form>
 </div>
